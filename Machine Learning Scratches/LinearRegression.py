@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.datasets import make_regression
 from sklearn.model_selection import train_test_split
-from IPython import display
+from gif_making import gif_plotter
 # Download the dataset
 X, Y = make_regression(n_samples=500, n_features=1, noise=20, random_state=42)
 
@@ -12,12 +12,11 @@ plt.title('Linear Regression Data')
 plt.xlabel('X')
 plt.ylabel('Y')
 plt.show()
-
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
 print('X train :',X_train.shape,'X test : ', X_test.shape)
 
 class LinearRegression:
-    def __init__(self, lr=0.001, n_iters=2000):
+    def __init__(self, lr=0.001, n_iters=1000):
         self.n_iters = n_iters
         self.lr = lr
         self.bias = None
@@ -48,6 +47,7 @@ class LinearRegression:
 lr = LinearRegression(n_iters=5000)
 
 # Training the model
+print('Model Training ...')
 lr.fit(X_train, y_train)
 
 #plotting training graphs
@@ -59,6 +59,7 @@ plt.xlabel('X train')
 plt.ylabel('Y train')
 plt.show()
 # Predictions
+gif_plotter(X_train,y_train,lr.y_pred)
 y_pred = lr.predict(X_test)
 
 # Plotting the values

@@ -16,7 +16,7 @@ class LogisticRegression:
         self.n_iters = n_iters
         self.weights = None
         self.bias = None
-        
+        self.y_pred=[]
     
     def sigmoid(self, x):
         return 1.0 / (1 + np.exp(-x))
@@ -29,7 +29,7 @@ class LogisticRegression:
         for _ in range(self.n_iters):
             y_pred = np.dot(X, self.weights) + self.bias
             h = self.sigmoid(y_pred)
-            
+            self.y_pred.append(h)
             # Loss function
             dw = 1/n_samples * np.dot(X.T, (h - Y))
             db = 1/n_samples * np.sum(h - Y)
