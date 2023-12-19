@@ -51,7 +51,8 @@ class ClassificationData:
         X_test_binarised = np.where(X_test<threshold,0,1)
         return X_train_binarised, y_train, X_test_binarised, y_test
     
-classification_data = ClassificationData(sample_size=100)
-X_train, y_train = classification_data.train_data(size=100)
-classification_data.plot_scatter()
-classification_data.binarisation(1000)
+#classification_data = ClassificationData(sample_size=100)
+#X_train, y_train = classification_data.train_data(size=100)
+#classification_data.plot_scatter()
+#classification_data.binarisation(1000)
+

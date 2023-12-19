@@ -11,18 +11,19 @@ def II_phase_model(X,y,b):
         y_pred=(np.sum(x)>=b)
         y_pred_train.append(y_pred)
         accurate_rows+=(y==y_pred)
-    print(accurate_rows,accurate_rows/X.shape[0])
+    print('Accurate Rows : ',accurate_rows,accurate_rows/X.shape[0])
+    return accurate_rows
 
-def III_phase_model(X,y):
-    for b in range(X.shape[1]+1):
-        y_pred_train=[]
-        accurate_rows=0.0
-
-        for x,y in zip(X,y):
-            y_pred=(np.sum(x)>=b)
+def III_phase_model(X, y):
+    for b in range(X.shape[1] + 1):
+        y_pred_train = []
+        accurate_rows = 0.0
+        #print(type(X), type(y))
+        for x_value, y_value in zip(X, y):  # Use different variable names
+            y_pred = (np.sum(x_value) >= b)
             y_pred_train.append(y_pred)
-            accurate_rows+=(y==y_pred)
-        print(f'Threhold : {b} | Accuracy : {accurate_rows/X.shape[0] :.2f}')
+            accurate_rows += (y_value == y_pred)
+        print(f'Threshold : {b} | Accuracy : {accurate_rows / X.shape[0] :.2f}')
 
 class MPNeuron:
 
